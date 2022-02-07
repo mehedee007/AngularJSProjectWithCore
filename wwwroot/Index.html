@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html ng-app="category_App">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <base href="/"/>
+    <style>
+        table{
+            border: 1px solid #b6ff00
+        }
+    </style>
+</head>
+<body>
+    <div class="container col-lg-12">
+        <div class="sidebar" data-background-color="green" data-active-color="warning">
+                <sidebar-menu />
+        </div>
+        <div class="main-panel">
+            <div class="content">
+                <ui-view>
+                    <p>
+                        <img src="/img/ajax_small.gif" />  Please wait ...
+                    </p>
+                </ui-view>
+            </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <nav class="pull-left">
+                        <ul>
+                         
+                        </ul>
+                    </nav>
+                    <div class="copyright pull-right">
+                        &copy;
+                        <script>document.write(new Date().getFullYear())</script> , &copy; <i>Mehedee</i>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scripts-->
+    <script src="/lib/jquery/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="/lib/bootstrap/tether.min.js"></script>
+    <script src="/lib/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+
+    <script src="/lib/angular/angular.min.js"></script>
+    <script src="/lib/angular/angular-ui-router.min.js"></script>
+
+    <script src="app.module.js"></script>
+</body>
+</html>

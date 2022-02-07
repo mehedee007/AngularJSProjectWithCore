@@ -1,0 +1,52 @@
+﻿<form name="frmCategory" novalidate>
+    <input type="hidden" ng-model="categoryModel.categoryID" name="cid" />
+
+    <div class="form-group">
+        <label for="cname" class="control-label">Category Name</label>
+        <input type="text" class="form-control" ng-model="categoryModel.categoryName" name="cname" placeholder="Name" required />
+        <span class="error text-danger" ng-show="(frmCategory.$dirty||submitted) && frmCategory.cname.$error.required">Category Name is Required</span>
+    </div>
+    <div class="form-group">
+        <label for="cdescription" class="control-label">Category Description</label>
+        <textarea type="text" class="form-control" ng-model="categoryModel.description" name="cdescription" placeholder="Description" ng-minlength="10"/>
+        <span class="error text-danger" ng-show="(frmCategory.$dirty||submitted) && frmCategory.cdescription.$error.minlength">Description Must be of Minimum of 10 charcter!</span>
+    </div>
+    <div class="form-group">
+        <label for="cAvailability" class="control-label">Availability</label>
+        <input type="checkbox" class="form-control" ng-model="categoryModel.isAvailable" name="cAvailability"/>
+    </div>
+    <div class="form-group">
+        <label for="centry" class="control-label">Entry Date</label>
+        <input type="date" class="form-control" ng-model="categoryModel.entryDate" name="centry" placeholder="yyyy-MM-dd" required />
+        <span class="error" ng-show="(frmCategory.$dirty||submitted||untouched) && frmCategory.centry.$error.required">Entry Date is Required</span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-danger" ng-click="reset()">Reset</button>
+        <button type="submit" class="btn btn-primary" ng-click="saveCategory()" ng-disabled="frmCategory.$invalid"
+                ng-If="categoryModel.categoryID == 0">
+            Create
+        </button>
+        <button type="submit" class="btn btn-success" ng-click="updateCategory()" ng-disabled="frmCategory.$invalid"
+                ng-If="categoryModel.categoryID != 0">
+            Update
+        </button>
+    </div>
+    <table>
+        <tr ng-repeat="category in ListCategory">
+            <td>{{ $index+1 }}</td>
+            <td>{{ category.categoryName }}</td>
+            <td>{{ category.isAvailable }}</td>
+            <td>{{ category.entryDate | date: shortDate}}</td>
+            <td>{{ category.description }}</td>
+            <td>
+                <a href="#" ng-click="getCategory(category)" title="Edit Record" class="btn btn-primary btn-xs pull-right">
+                    Edit
+                </a>
+                <a href="#" ng-click="deleteCategory(category)" title="Delete Record" class="btn btn-danger btn-xs pull-right">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    </table>
+</form>
